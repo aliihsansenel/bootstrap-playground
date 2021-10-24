@@ -1,0 +1,43 @@
+.builder-container {
+    margin: 0;
+}
+.builder-container > .row  {
+    background-color: rgb(224, 224, 224);
+    border-radius: 0.3em;
+}
+.builder-container > .row > div {
+    background-color: rgb(238, 238, 238);
+}
+.builder-container > .row > div > div{
+    height: 4em;
+    border: 0.2em solid rgb(82, 82, 82);
+    border-radius: 0.8em;
+}
+.builder-container > .row div[class^="col-"] {
+    color: rgb(92, 92, 92);
+}
+.builder-container > .add-row {
+    background-color: rgb(231, 231, 231);
+    border: 0.2em dashed rgb(100, 100, 100);
+    border-radius: 0.8em;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+.builder-container > .row .add-col > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(231, 231, 231);
+    border: 0.2em dashed rgb(100, 100, 100);
+    border-radius: 0.8em;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+.builder-container > .row .add-col span {
+    color: var(--bs-dark);
+}

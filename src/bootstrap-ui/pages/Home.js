@@ -16,7 +16,7 @@ import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import ResetPassword from "../auth/ResetPassword";
 
-// import BuilderContainer from "./builder/BuilderContainer";
+import BuilderContainer from "./builder/BuilderContainer";
 
 function Home() {
     const [authPanelShow, setAuthPanelShow, authStatus] =
@@ -97,28 +97,10 @@ function Home() {
                 </Col>
             </Row>
             <Row>
-                <h1 className="text-center mb-4">Homepage</h1>
-                <div>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Ullam vitae adipisci aspernatur placeat, velit ut ratione
-                    optio, iste, aliquid doloribus sunt quisquam rerum dolor.
-                    Necessitatibus sapiente cupiditate vero possimus omnis
-                    placeat reiciendis adipisci nobis, veniam consequuntur
-                    provident eos. Ea autem eaque placeat illum nihil, illo
-                    praesentium aliquam explicabo quibusdam at nemo repellat
-                    corrupti deserunt dignissimos culpa perspiciatis asperiores
-                    inventore architecto vitae earum libero totam rem
-                    consequatur! Dignissimos dolorum unde sequi quos, natus
-                    voluptatibus cum nisi, facere deserunt doloribus officia nam
-                    quis enim minus, repellat maxime libero? Voluptatem, ducimus
-                    molestias excepturi est corporis voluptas eius odit unde
-                    laborum? Molestiae, dolorem nesciunt.
-                </div>
+                <h1 className="text-center mb-4">Bootstrap 5 Builder</h1>
             </Row>
             <Row>
-                {/* <BuilderContainer> 
-
-            </BuilderContainer> */}
+                <BuilderContainer/>
             </Row>
         </Container>
     );
