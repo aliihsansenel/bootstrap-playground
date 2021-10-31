@@ -1,0 +1,56 @@
+.builder-container > .add-row {
+    background-color: rgb(231, 231, 231);
+    border: 0.2em dashed rgb(100, 100, 100);
+    border-radius: 0.8em;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+.builder-container > .row .add-col > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: rgb(231, 231, 231);
+    border: 0.2em dashed rgb(100, 100, 100);
+    border-radius: 0.8em;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+.builder-container > .row .add-col span {
+    color: var(--bs-dark);
+}
+
+/* Class Selector */
+.class-selector {
+    z-index: 2;
+}
+/* xs sm md lg xl xxl */
+.grid-class-selector{
+    background-color: white;
+    cursor:pointer;
+}
+.grid-class-selector ul.break-number {
+    display: grid;
+    grid-template: 1fr / repeat(6, minmax(0, 1fr));
+    margin-bottom: 1px;
+}
+.grid-class-selector ul.break-number .page-link{
+    padding: 0.1rem 0.35rem;
+}
+.grid-class-selector .seperator {
+    height: 2px;
+    background-color: rgb(231, 231, 231);
+}
+
+/* 1 2 3 4 5 6 7 8 9 10 11 12 * */
+.grid-class-selector ul.col-number {
+    display: grid;
+    grid-template: 1fr / repeat(13, minmax(0, 1fr));
+}
+.grid-class-selector ul.col-number .page-link {
+    padding: 0.1rem 0.35rem;
+}

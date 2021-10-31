@@ -5,24 +5,5 @@
 }
 
 .auth.hidden {
-    /* opacity: 0.6; */
     display: none;
 }
-
-/* button:not(:focus) + .auth:not(:focus) {
-    display: none;
-    background-color: pink;
-} */
-
-/* .form-group {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-} */
-/* 
-.form-label {
-    display: flex;
-    align-items: center;
-} */
-/* .auth-form {
-    
-}  */

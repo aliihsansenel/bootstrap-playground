@@ -16,28 +16,11 @@
 .builder-container > .row div[class^="col-"] {
     color: rgb(92, 92, 92);
 }
-.builder-container > .add-row {
-    background-color: rgb(231, 231, 231);
-    border: 0.2em dashed rgb(100, 100, 100);
-    border-radius: 0.8em;
-
-    font-weight: 600;
-
-    cursor: pointer;
-}
-.builder-container > .row .add-col > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.builder-container .cover {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     
-    background-color: rgb(231, 231, 231);
-    border: 0.2em dashed rgb(100, 100, 100);
-    border-radius: 0.8em;
-
-    font-weight: 600;
-
-    cursor: pointer;
-}
-.builder-container > .row .add-col span {
-    color: var(--bs-dark);
+    z-index: 1;
 }

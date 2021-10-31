@@ -22,7 +22,7 @@ export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);
     
-    function signup(email, password) {
+    async function signup(email, password) {
         return createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             sendEmailVerification(userCredential.user)});
     }

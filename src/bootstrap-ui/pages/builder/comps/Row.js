@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 
 import Col, { AddCol } from "./Col";
 
+import plus from "../../../../assets/plus-solid.svg";
+
+import "./style.css";
+
 export default function Row() {
     const [classes, setClasses] = useState({ layout: ["row", "gx-2", "mb-2"] });
     const classesString = useRef("");
@@ -19,7 +23,9 @@ export default function Row() {
     }
     return (
         <div className={getClassesString()}>
-            <span className="mb-1">{"." + classesString.current.replaceAll(" ", " .")}</span>
+            <span className="mb-1" style={{ wordSpacing: "0.3em" }}>
+                {"." + classesString.current.replaceAll(" ", " .")}
+            </span>
             {colKeys.map((colKeys) => (
                 <Col key={colKeys} />
             ))}
@@ -30,9 +36,17 @@ export default function Row() {
 
 function AddRow({ clickHandler }) {
     return (
-        <div className="add-row w-100 d-flex justify-content-center text-center">
-            <div className="w-100" onClick={clickHandler}>
+        <div className="add-row w-100 d-flex justify-content-center text-center mb-2">
+            <div
+                className="w-100 d-flex justify-content-center align-items-center"
+                onClick={clickHandler}
+            >
                 <span>Add Row</span>
+                <img
+                    style={{ height: "1.0em", marginLeft: "0.4em" }}
+                    src={plus}
+                    alt="Add row"
+                />
             </div>
         </div>
     );
