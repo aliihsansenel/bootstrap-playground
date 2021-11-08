@@ -36,7 +36,7 @@ export default function Row() {
 
 function AddRow({ clickHandler }) {
     return (
-        <div className="add-row w-100 d-flex justify-content-center text-center mb-2">
+        <div className="add-row w-100 d-flex justify-content-center text-center mb-2 noselect">
             <div
                 className="w-100 d-flex justify-content-center align-items-center"
                 onClick={clickHandler}

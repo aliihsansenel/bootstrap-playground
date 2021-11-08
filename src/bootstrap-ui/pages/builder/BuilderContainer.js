@@ -4,15 +4,22 @@ import { Container, Button } from "react-bootstrap";
 
 import Row, { AddRow } from "./comps/Row";
 import ClassSelector from "./comps/ClassSelector";
+import BuildModeNav from "./comps/BuildModeNav";
 
 import "./style.css";
 
 export const ClassSelectorContext = React.createContext();
 
+export const buildModes = {
+    GRID: 0,
+    SPACING: 1,
+};
+
 export default function BuilderContainer() {
     const setClassesState = useRef(null);
-    const rawClassesData = useRef({ grid: [] });
+    const rawClassesData = useRef({ grid: [], spacing: {m : [], p : []}});
     const [displayClassSelector, setDisplayClassSelector] = useState(false);
+    const [buildMode, setBuildMode] = useState(buildModes.GRID);
 
     function closeClassSelector(e) {
         setDisplayClassSelector((displayClassSelector) => {
@@ -23,6 +30,11 @@ export default function BuilderContainer() {
             }
         });
     }
+    function switchBuildMode(index) {
+        if(buildMode == index) return;
+        setDisplayClassSelector(false);
+        setBuildMode(index);
+    }
     useEffect(() => {
         document.body.addEventListener("click", closeClassSelector);
 
@@ -32,9 +44,15 @@ export default function BuilderContainer() {
     }, []);
     return (
         <ClassSelectorContext.Provider
-            value={{ rawClassesData, setClassesState, setDisplayClassSelector }}
+            value={{
+                rawClassesData,
+                setClassesState,
+                setDisplayClassSelector,
+                buildMode,
+            }}
         >
-            {displayClassSelector && <ClassSelector />}
+            <BuildModeNav buildMode={{ buildMode, switchBuildMode }} />
+            {displayClassSelector && <ClassSelector buildMode={buildMode} />}
             <BuilderContainerBody cover={displayClassSelector} />
         </ClassSelectorContext.Provider>
     );

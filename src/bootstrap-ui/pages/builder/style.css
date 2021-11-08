@@ -12,6 +12,9 @@
     height: 4em;
     border: 0.2em solid rgb(82, 82, 82);
     border-radius: 0.8em;
+
+    overflow: hidden;
+    cursor: pointer;
 }
 .builder-container > .row div[class^="col-"] {
     color: rgb(92, 92, 92);
