@@ -6,7 +6,7 @@ import Row, { AddRow } from "./comps/Row";
 import ClassSelector from "./comps/class-selectors/ClassSelector";
 import BuildModeNav from "./comps/BuildModeNav";
 
-import "./style.css";
+import "./style.scss";
 
 export const ClassSelectorContext = React.createContext();
 

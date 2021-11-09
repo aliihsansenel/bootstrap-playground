@@ -4,7 +4,7 @@ import { ClassSelectorContext, buildModes } from "../../BuilderContainer";
 import GridClassSelector from "./GridClassSelector";
 import SpacingClassSelector from "./SpacingClassSelector";
 
-import "./style.css";
+import "./style.scss";
 
 export const breakPointOptions = ["xs", "sm", "md", "lg", "xl", "xxl"];
 

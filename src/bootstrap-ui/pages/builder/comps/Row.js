@@ -4,7 +4,7 @@ import Col, { AddCol } from "./Col";
 
 import plus from "../../../../assets/plus-solid.svg";
 
-import "./style.css";
+import "./style.scss";
 
 export default function Row() {
     const [classes, setClasses] = useState({ layout: ["row", "gx-2", "mb-2"] });

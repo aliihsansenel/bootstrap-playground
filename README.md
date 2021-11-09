@@ -8,6 +8,6 @@ Open [live demo](https://bootstrap-builder.netlify.app/), hosted on Netlify.
 
 ## Future Commits
 
-* migrate to sass
+* update .gitignore file
 * ...
 * migrate to HOC pattern

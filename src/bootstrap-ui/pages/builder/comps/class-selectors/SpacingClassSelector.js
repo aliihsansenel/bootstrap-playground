@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 import { ClassSelectorContext } from "../../BuilderContainer";
 import { breakPointOptions, PageItem, PageItemWithIndex } from "./ClassSelector";
 
-import "./style.css";
+import "./style.scss";
 
 export default function SpacingClassSelector() {
     const { rawClassesData, setClassesState } =

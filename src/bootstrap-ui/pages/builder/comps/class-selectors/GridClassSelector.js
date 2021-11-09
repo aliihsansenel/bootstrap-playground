@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 import { ClassSelectorContext, buildModes } from "../../BuilderContainer";
 import { breakPointOptions, PageItem } from "./ClassSelector";
 
-import "./style.css";
+import "./style.scss";
 
 export default function GridClassSelector() {
     const { rawClassesData, setClassesState } =

@@ -5,7 +5,7 @@ import plus from "../../../../assets/plus-solid.svg";
 import { ClassSelectorContext, buildModes } from "../BuilderContainer";
 import { breakPointOptions } from "./class-selectors/ClassSelector";
 
-import "./style.css";
+import "./style.scss";
 
 export default function Col() {
     const [classes, setClasses] = useState({
