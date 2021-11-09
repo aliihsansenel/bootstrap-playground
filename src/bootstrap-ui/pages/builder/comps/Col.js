@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import plus from "../../../../assets/plus-solid.svg";
 
 import { ClassSelectorContext, buildModes } from "../BuilderContainer";
-import { breakPointOptions } from "./ClassSelector";
+import { breakPointOptions } from "./class-selectors/ClassSelector";
 
 import "./style.css";
 

@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import { Container, Button } from "react-bootstrap";
 
 import Row, { AddRow } from "./comps/Row";
-import ClassSelector from "./comps/ClassSelector";
+import ClassSelector from "./comps/class-selectors/ClassSelector";
 import BuildModeNav from "./comps/BuildModeNav";
 
 import "./style.css";

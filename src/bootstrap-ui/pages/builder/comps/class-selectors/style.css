@@ -1,0 +1,75 @@
+/* Class Selector */
+.class-selector {
+    white-space: nowrap;
+    z-index: 2;
+}
+
+/* Grid Class Selector */
+/* xs sm md lg xl xxl */
+.grid-class-selector {
+    background-color: white;
+    cursor:pointer;
+}
+.grid-class-selector ul.break-point {
+    display: grid;
+    grid-template: 1fr / repeat(6, minmax(0, 1fr));
+}
+.grid-class-selector ul.break-point .page-link {
+    padding: 0.1rem 0.35rem;
+}
+.grid-class-selector .seperator {
+    height: 2px;
+    background-color: rgb(231, 231, 231);
+}
+
+/* 1 2 3 4 5 6 7 8 9 10 11 12 * */
+.grid-class-selector ul.col-number {
+    display: grid;
+    grid-template: 1fr / repeat(13, minmax(0, 1fr));
+}
+.grid-class-selector ul.col-number .page-link {
+    padding: 0.1rem 0.35rem;
+}
+
+/* Spacing Class Selector */
+.spacing-class-selector ul li {
+    cursor:pointer;
+}
+
+.spacing-class-selector ul.mp-selector .page-item {
+    flex-grow: 1;
+    
+}
+.spacing-class-selector ul.mp-selector li.active:nth-child(1) .page-link {
+    background-color: rgb(244, 255, 162);
+    border-color: rgb(179, 187, 119);
+    color: var(--bs-dark);
+}
+.spacing-class-selector ul.mp-selector li.active:nth-child(2) .page-link {
+    background-color: rgb(165, 156, 225);
+    border-color: rgb(108, 102, 146);
+    color: var(--bs-dark);
+}
+.spacing-class-selector ul.break-point {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    cursor:pointer;
+
+}
+.spacing-class-selector ul.break-point .page-link {
+    text-align: center;
+}
+.spacing-class-selector ul.side-selector{
+    display: grid;
+    grid-template: minmax(0, 1fr) 6% minmax(0, 1fr) 6% minmax(0, 1fr) / minmax(0, 1fr) 6% minmax(0, 1fr) 6% minmax(0, 1fr);
+}
+.spacing-class-selector ul.side-selector .page-link { height: 100%; padding:0; padding-top: 0.25rem;}
+.spacing-class-selector ul.side-selector li:nth-child(1) { grid-area: 1 / 3; }
+.spacing-class-selector ul.side-selector li:nth-child(2) { grid-area: 3 / 1; }
+.spacing-class-selector ul.side-selector li:nth-child(3) { grid-area: 3 / 5; }
+.spacing-class-selector ul.side-selector li:nth-child(4) { grid-area: 5 / 3; }
+
+.spacing-class-selector ul.col-number {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}

@@ -8,7 +8,6 @@ Open [live demo](https://bootstrap-builder.netlify.app/), hosted on Netlify.
 
 ## Future Commits
 
-* seperate classes
 * migrate to sass
 * ...
 * migrate to HOC pattern
