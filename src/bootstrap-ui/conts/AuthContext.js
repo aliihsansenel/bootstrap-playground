@@ -18,6 +18,7 @@ export function useAuthContext() {
     return useContext(AuthContext);
 }
 
+// Provides firebase auth functionality.
 export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true);

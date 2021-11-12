@@ -22,6 +22,8 @@ export default function Col() {
         grid: ["12", "6", "4", "4", "4", "4"],
         spacing: getDefaultSpacingData(),
     });
+
+    // Sets class selectors target as this column and make class selectors shown
     function clickHandler(e) {
         setDisplayClassSelector((displayClassSelector) => {
             if (!displayClassSelector) {
@@ -36,6 +38,7 @@ export default function Col() {
     const classesString = useRef("");
     const allClassesString = useRef("");
 
+    // Generate the class string related to current build mode order to display 
     function getClassesString() {
         switch (buildMode) {
             case buildModes.GRID:
@@ -56,6 +59,7 @@ export default function Col() {
         }
         return classesString.current;
     }
+    // Generate the long class string order to make columns as a DOM element have it as a class attribute.
     function getAllClassesString() {
         allClassesString.current = classes.grid.join(" ");
         if (classes.spacing["m"].length != 0)
@@ -76,6 +80,7 @@ export default function Col() {
     );
 }
 
+// Add column to the row
 function AddCol({ clickHandler }) {
     return (
         <div className="add-col w-100 d-flex justify-content-center noselect">
@@ -95,10 +100,13 @@ function AddCol({ clickHandler }) {
 }
 export { AddCol };
 
+// Generate blank raw spacing data
 function getBlankSpacingData(sides) {
     const _bp = Array(breakPointOptions.length).fill(sides);
     return _bp;
 }
+
+// Fill initital spacing values over initial blank spacing raw data
 function getDefaultSpacingData() {
     let marginArray = getBlankSpacingData(["_", "_", "_", "2"]);
     let paddingArray = getBlankSpacingData(["1", "1", "1", "1"]);

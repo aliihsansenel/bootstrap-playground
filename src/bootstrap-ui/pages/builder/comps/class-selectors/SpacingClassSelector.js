@@ -10,9 +10,11 @@ import "./style.scss";
 export default function SpacingClassSelector() {
     const { rawClassesData, setClassesState } =
         useContext(ClassSelectorContext);
+    // Set for margin or padding?
     const [selectedSpacingType, setSelectedSpacingType] = useState("m");
     const indexMP = ["m", "p"].indexOf(selectedSpacingType);
 
+    // Set for which breakpoint?
     const [selectedBreakPoint, setSelectedBreakPoint] = useState("xs");
     const indexBP = breakPointOptions.indexOf(selectedBreakPoint);
     const [marginValues, setMarginValues] = useState(
@@ -21,16 +23,20 @@ export default function SpacingClassSelector() {
     const [paddingValues, setPaddingValues] = useState(
         rawClassesData.current.spacing[1]
     );
+    // Set for which side or sides top, bottom, left, right? 
     const [selectedSides, setSelectedSides] = useState(Array(4).fill(true));
     const displayedSideValues =
         rawClassesData.current.spacing[indexMP][indexBP];
     const spacingValuesDisabled = false;
 
+    // Spacing options: _ for none, 0, 1, 2, 3, 4, 5 and * for auto
     let spacingOptions = Array.from({ length: 7 }, (_, i) =>
         (i - 1).toString()
     );
     spacingOptions[0] = "_";
     spacingOptions.push("*");
+    
+    // Switch between spacing types, margin and padding
     function spacingTypeHandler(value) {
         setSelectedSpacingType((prevState) => {
             if (prevState === value) {
@@ -40,11 +46,13 @@ export default function SpacingClassSelector() {
             return value;
         });
     }
+    // Switch between breakpoints
     function breakPointHandler(value) {
         setSelectedBreakPoint((prevState) =>
             prevState === value ? "xs" : value
         );
     }
+    // Toggle sides that will be set 
     function sideHandler(index) {
         setSelectedSides((prevState) => {
             let selectedSides = [...prevState];
@@ -52,6 +60,7 @@ export default function SpacingClassSelector() {
             return selectedSides;
         });
     }
+    // Every time spacing settings changes, raw data and classes updated
     function spacingValueHandler(value) {
         let newSpacingValues = [];
         const setSpacingValues =
@@ -83,6 +92,7 @@ export default function SpacingClassSelector() {
             };
         });
     }
+    // Convert raw spacing data to bootstrap classes like m-2, py-1
     function toSpacingClasses(spacingValues) {
         let spacingClasses = [];
         let lastSpacingValues = ["_", "_", "_", "_"];

@@ -20,16 +20,19 @@ import BuilderContainer from "./builder/BuilderContainer";
 
 import "./style.css";
 
+// Home page
 function Home() {
     const [authPanelShow, setAuthPanelShow, authStatus] =
         useContext(AuthPanelContext);
     let history = useHistory();
 
+    // Clicking button on navbar displays auth panel
     function handleClick(e) {
         if (!authPanelShow) history.push("/login");
         setAuthPanelShow((authPanelShow) => !authPanelShow);
         e.stopPropagation();
     }
+    // Clicking outside auth panel closes auth panel
     function closeAuthPanel(e) {
         setAuthPanelShow((authPanelShow) => {
             if (authPanelShow && !e.target.closest(".card a, .auth")) {
@@ -47,6 +50,7 @@ function Home() {
         };
     }, []);
 
+    // Row and Col components inside return are originated react-bootstrap library
     return (
         <Container fluid>
             <Navbar
@@ -79,6 +83,7 @@ function Home() {
                                     "auth" + (authPanelShow ? "" : " hidden")
                                 }
                             >
+                                {/* react-router routing */}
                                 <Switch>
                                     <Route path="/login">
                                         <Login />
@@ -104,10 +109,11 @@ function Home() {
                     </Col>
                 </Row>
             </AuthProvider>
+            {/* Websites heading */}
             <Row>
                 <h1 className="text-center mb-4">Bootstrap 5 Builder</h1>
             </Row>
-
+            {/* Builder container after websites heading */}
             <Row>
                 <BuilderContainer />
             </Row>

@@ -9,6 +9,7 @@ import "./style.scss";
 export const breakPointOptions = ["xs", "sm", "md", "lg", "xl", "xxl"];
 
 export default function ClassSelector({ buildMode }) {
+    // return corresponding class selector by build mode 
     function subClassSelector(buildMode) {
         switch (buildMode) {
             case buildModes.GRID:
@@ -21,6 +22,8 @@ export default function ClassSelector({ buildMode }) {
     }
     return <div>{subClassSelector(buildMode)}</div>;
 }
+
+// Page Item component with index so parent will know index of clicked child element
 export function PageItemWithIndex({ index, text, handlerFunction, active = true }) {
     function clickHandler(e) {
         handlerFunction(index);
@@ -37,6 +40,8 @@ export function PageItemWithIndex({ index, text, handlerFunction, active = true 
         </li>
     );
 }
+
+// for implementing page-item from bootstrap via react-bootstrap library
 export function PageItem({ text, handlerFunction, disabled = false, active = false }) {
     function clickHandler(e) {
         handlerFunction(text);

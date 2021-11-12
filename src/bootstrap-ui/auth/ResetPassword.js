@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import auth from "../firebase";
 import { useAuthContext } from "../conts/AuthContext";
 import { AuthPanelContext } from "../conts/AuthPanelContext";
 
@@ -58,6 +57,7 @@ export default function ResetPassword() {
             <Card>
                 <Card.Body>
                     <h2 className="text-start mb-3">Reset Password</h2>
+                    {/* Status message box */}
                     {successStatus.status != null && (
                         <Alert variant={successStatus.status ? 'success' : 'danger' } className={"text-start mb-3 py-2"}>
                             {successStatus.message}
@@ -65,6 +65,7 @@ export default function ResetPassword() {
                     )}
 
                     <Form onSubmit={handleSubmit}>
+                        {/* email form item group */}
                         <Form.Group id="email" className="form-group mb-1">
                             <Form.Label className="form-label m-0">
                                 E-mail

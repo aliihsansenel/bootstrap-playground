@@ -11,12 +11,16 @@ export default function GridClassSelector() {
     const { rawClassesData, setClassesState } =
         useContext(ClassSelectorContext);
 
+    // Represents bootstrap's grid system 
     let gridSpanOptions = Array.from({ length: 12 }, (_, i) =>
         (i + 1).toString()
     );
+    // * for auto sizing columns eg. .col, .col-lg
     gridSpanOptions.push("*");
 
     const [selectedBreakPoint, setSelectedBreakPoint] = useState("xs");
+    
+    // Partial data from rawClassesData delegating grid span data
     const [gridSpans, setGridSpans] = useState(rawClassesData.current.grid);
 
     function breakPointHandler(value) {
@@ -28,6 +32,7 @@ export default function GridClassSelector() {
         const index = breakPointOptions.indexOf(selectedBreakPoint);
         let gridSpans = [];
         setGridSpans((prevState) => {
+            // Set columns all grid span classes for selected break point and wider breakpoints  
             for (let i = index; i < breakPointOptions.length; i++) {
                 prevState[i] = value;
             }
@@ -40,6 +45,8 @@ export default function GridClassSelector() {
             return { ...prevState, grid: toGridClasses(gridSpans) };
         });
     }
+
+    // convert grid span raw data to bootstrap classes, 12 6 6 6 ... => col-12 col-sm-6
     function toGridClasses(gridSpans) {
         let gridClasses = [];
         let lastSpan = "*";

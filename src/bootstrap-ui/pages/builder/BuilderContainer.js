@@ -16,11 +16,17 @@ export const buildModes = {
 };
 
 export default function BuilderContainer() {
+    // clicked column sets this as its own setClasses state
     const setClassesState = useRef(null);
-    const rawClassesData = useRef({ grid: [], spacing: {m : [], p : []}});
+
+    // clicked column sets this as its own rawClasses data, bootstrap classes extracted using this data
+    const rawClassesData = useRef({ grid: [], spacing: { m: [], p: [] } });
+
+    // Should class selector panel be displayed?
     const [displayClassSelector, setDisplayClassSelector] = useState(false);
     const [buildMode, setBuildMode] = useState(buildModes.GRID);
 
+    // close class selector and the transparent cover that prevents triggering other builder actions
     function closeClassSelector(e) {
         setDisplayClassSelector((displayClassSelector) => {
             if (displayClassSelector && e.target.closest(".cover")) {
@@ -31,7 +37,7 @@ export default function BuilderContainer() {
         });
     }
     function switchBuildMode(index) {
-        if(buildMode == index) return;
+        if (buildMode == index) return;
         setDisplayClassSelector(false);
         setBuildMode(index);
     }
@@ -41,7 +47,7 @@ export default function BuilderContainer() {
         return function cleanup() {
             document.body.removeEventListener("click", closeClassSelector);
         };
-    }, []);
+    });
     return (
         <ClassSelectorContext.Provider
             value={{
@@ -69,6 +75,7 @@ function BuilderContainerBody({ cover }) {
             fluid
             className="builder-container position-relative text-center"
         >
+            {/* covers surface of builder when class selectors are displayed so other actions like adding column won't be triggered */}
             {cover && <div className="cover position-absolute" />}
             {rowKeys.map((colKeys) => (
                 <Row key={colKeys} />

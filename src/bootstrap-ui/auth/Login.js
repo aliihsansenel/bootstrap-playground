@@ -1,12 +1,10 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import auth from "../firebase";
 import { useAuthContext } from "../conts/AuthContext";
 import { AuthPanelContext } from "../conts/AuthPanelContext";
 
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import Col from "react-bootstrap/Col";
 
 import LogoutButton from "./Logout";
 
@@ -16,11 +14,16 @@ function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
 
+    // Provides login function from firebase API. 
     const { login } = useAuthContext();
+
+    /*  formDataPass provides data sharing among auth panels eg. login, signup
+        authStatus provides whether user loggedIn or not and navbar button text */
     const [authPanelShow, setAuthPanelShow, authStatus, setAuthStatus, formDataPass] =
         useContext(AuthPanelContext);
-
+    // keeps status of succes and message text
     const [successStatus, setSuccessStatus] = useState({status: null, message: ''});
+    // loading state makes login button disabled
     const [loading, setLoading] = useState(false);
 
     let emailName = "";
@@ -33,6 +36,7 @@ function Login() {
         await login(emailRef.current.value, passwordRef.current.value).then(
             (userCredential) => {
                 const user = userCredential.user;
+                // the beginning part of email address before domain name.  
                 emailName = emailRef.current.value.substr(
                     0,
                     emailRef.current.value.indexOf("@")
@@ -47,6 +51,7 @@ function Login() {
                 setSuccessStatus({status: true, message: 'Login succeded.'});
                 
             },
+            // handle submit error
             (error) => {
                 console.log(error.code, error.message);
                 emailRef.current.value = email;
@@ -70,6 +75,7 @@ function Login() {
         history.push(path === null ? "/" : path);
         e.stopPropagation();
     }
+    // fill out shared form data before the first render
     useEffect(() => {
         if(formDataPass.transition){
             emailRef.current.value = formDataPass.emailPreLogin;
@@ -81,14 +87,16 @@ function Login() {
             <Card.Body>
                 <div className="d-flex justify-content-between">
                     <h2 className="text-start mb-3">Log In</h2>
+                    {/* Status message box */}
                     {successStatus.status == false && (
                         <Alert variant='danger' className={"text-start mb-3 py-2"}>
                             {successStatus.message}
                         </Alert>
                     )}
+                    {/* Logout button displayed if logged in*/}
                     {authStatus.loggedIn && <LogoutButton />}
                 </div>
-
+                {/* email text field */}
                 <Form onSubmit={handleSubmit} className="auth-form">
                     <Form.Group id="email" className="form-group mb-1">
                         <Form.Label className="form-label m-0">
@@ -102,6 +110,7 @@ function Login() {
                             autoFocus
                         />
                     </Form.Group>
+                    {/* password text field */}
                     <Form.Group id="password" className="form-group mb-1">
                         <Form.Label className="form-label m-0">
                             Password
@@ -113,8 +122,8 @@ function Login() {
                             required
                         />
                     </Form.Group>
+                    {/* forgot password */}
                     <p className="text-end m-0">
-                        {/* TODO bu yazıyı başlığın sağına yaslayıp hatalı girişte parlatıp */}
                         <Link
                             className="text-muted"
                             to="/forgot-password"
@@ -123,6 +132,7 @@ function Login() {
                             <small>Forgot Password?</small>
                         </Link>
                     </p>
+                    {/* submit button */}
                     <Button
                         disabled={loading}
                         className="w-100 mt-2"
@@ -131,6 +141,7 @@ function Login() {
                         Log In
                     </Button>
                 </Form>
+                {/* signup link */}
                 <div className="w-100 mt-2">
                     <p className="text-center mb-0">
                         Need an account? <Link to="/signup" onClick={handleClick}>Sign Up</Link>

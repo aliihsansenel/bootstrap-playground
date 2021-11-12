@@ -10,6 +10,7 @@ export default function Row() {
     const [classes, setClasses] = useState({ layout: ["row", "gx-2", "mb-2"] });
     const classesString = useRef("");
 
+    // Holds keys for columns so React wont confuse columns with eachother.  
     const [colKeys, setColKeys] = useState([0, 1]);
     const colIdCounter = useRef(1);
 
@@ -19,7 +20,6 @@ export default function Row() {
     }
     function clickHandler(e) {
         setColKeys([...colKeys, ++colIdCounter.current]);
-        e.stopPropagation();
     }
     return (
         <div className={getClassesString()}>
@@ -34,6 +34,7 @@ export default function Row() {
     );
 }
 
+// Add row to the builder container
 function AddRow({ clickHandler }) {
     return (
         <div className="add-row w-100 d-flex justify-content-center text-center mb-2 noselect">

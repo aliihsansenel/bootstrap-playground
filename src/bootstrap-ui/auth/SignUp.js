@@ -33,6 +33,7 @@ export default function SignUp() {
         e.preventDefault();
 
         setLoading(true);
+        // check if two password inputs' value identical
         if (!examinePasswordInputs()) {
             setSuccessStatus({
                 status: false,
@@ -94,6 +95,7 @@ export default function SignUp() {
             <Card.Body>
                 <div className="d-flex justify-content-between">
                     <h2 className="text-start mb-3">Sign Up</h2>
+                    {/* Status message box */}
                     {successStatus.status != null && (
                         <Alert
                             variant={
@@ -107,6 +109,7 @@ export default function SignUp() {
                 </div>
 
                 <Form onSubmit={handleSubmit}>
+                    {/* email input form group */}
                     <Form.Group id="email" className="form-group mb-1">
                         <Form.Label className="form-label m-0">
                             E-mail
@@ -119,6 +122,7 @@ export default function SignUp() {
                             autoFocus
                         />
                     </Form.Group>
+                    {/* password input form group */}
                     <Form.Group id="password" className="form-group mb-1">
                         <Form.Label className="form-label m-0">
                             Password
@@ -131,6 +135,7 @@ export default function SignUp() {
                             required
                         />
                     </Form.Group>
+                    {/* password confirmation */}
                     <Form.Group
                         id="passwordConfirm"
                         className="form-group mb-1"

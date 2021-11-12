@@ -5,7 +5,10 @@ import { AuthPanelContext } from "../conts/AuthPanelContext";
 import { Button } from "react-bootstrap";
 
 function LogoutButton() {
+    // Provides logout function from firebase API. 
     const { logout } = useAuthContext();
+    /*  authPanelShow indicates whether auth panel should displayed
+        authStatus provides whether user loggedIn or not and navbar button text */
     const [authPanelShow, setAuthPanelShow, authStatus, setAuthStatus] =
         useContext(AuthPanelContext);
 
@@ -21,7 +24,6 @@ function LogoutButton() {
             },
             (error) => {
                 console.log(error.code, error.message);
-                // setError("Failed to log out!");
             }
         );
 
