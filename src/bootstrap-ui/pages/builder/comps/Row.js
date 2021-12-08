@@ -18,18 +18,25 @@ export default function Row() {
         classesString.current = classes.layout.join(" ");
         return classesString.current;
     }
-    function clickHandler(e) {
+    function addColHandler(e) {
         setColKeys([...colKeys, ++colIdCounter.current]);
+    }
+    function removeColHandler(colKey) {
+        setColKeys((colKeys) => {
+            let temp = [...colKeys];
+            temp.splice(temp.indexOf(colKey), 1);
+            return temp;
+        });
     }
     return (
         <div className={getClassesString()}>
             <span className="mb-1" style={{ wordSpacing: "0.3em" }}>
                 {"." + classesString.current.replaceAll(" ", " .")}
             </span>
-            {colKeys.map((colKeys) => (
-                <Col key={colKeys} />
+            {colKeys.map((colKey) => (
+                <Col key={colKey} removeColHandler={() => removeColHandler(colKey)}/>
             ))}
-            <AddCol clickHandler={clickHandler} />
+            <AddCol clickHandler={addColHandler} />
         </div>
     );
 }

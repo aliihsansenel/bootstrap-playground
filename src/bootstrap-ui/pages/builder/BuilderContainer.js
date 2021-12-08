@@ -31,6 +31,8 @@ export default function BuilderContainer() {
         setDisplayClassSelector((displayClassSelector) => {
             if (displayClassSelector && e.target.closest(".cover")) {
                 return false;
+            } else if(e.target.closest(".remove-col")){
+                return false;
             } else {
                 return displayClassSelector;
             }

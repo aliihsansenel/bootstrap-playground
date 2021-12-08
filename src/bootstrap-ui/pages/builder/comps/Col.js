@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 
 import plus from "../../../../assets/plus-solid.svg";
+import cross from "../../../../assets/times-circle-regular.svg";
 
 import { ClassSelectorContext, buildModes } from "../BuilderContainer";
 import { breakPointOptions } from "./class-selectors/ClassSelector";
 
 import "./style.scss";
 
-export default function Col() {
+export default function Col({removeColHandler}) {
     const [classes, setClasses] = useState({
         grid: ["col-12", "col-sm-6", "col-lg-4"],
         spacing: { m: ["mb-2"], p: ["p-1"] },
@@ -75,6 +76,12 @@ export default function Col() {
                 style={{ wordSpacing: "0.3em", letterSpacing: "0.05em" }}
             >
                 {getClassesString().replaceAll(" ", " .")}
+                <img
+                    onClick={removeColHandler}
+                    className="remove-col"
+                    src={cross}
+                    alt="Remove column"
+                />
             </div>
         </div>
     );

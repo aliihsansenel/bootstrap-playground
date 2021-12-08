@@ -1,3 +1,6 @@
+$colHeight: 4em;
+$removeButtonHeight: 2.0em;
+
 .builder-container {
     margin: 0;
     > .row  {
@@ -5,13 +8,37 @@
         border-radius: 0.3em;
         > div {
             background-color: rgb(238, 238, 238);
-            > div{
-                height: 4em;
+            overflow: visible;
+            > div {
+                height: $colHeight;
                 border: 0.2em solid rgb(82, 82, 82);
                 border-radius: 0.8em;
             
-                overflow: hidden;
+                overflow: inherit;
                 cursor: pointer;
+
+                position: relative;
+                $delay: 0.5s;
+                img.remove-col {
+                    visibility: hidden;
+                    height: 0;
+                    opacity: 0.0;
+                    transition: opacity $delay, height 0s ease $delay, visibility 0s ease $delay;
+
+                    background-color: white;
+                    position: absolute;
+                    
+                    top: calc($removeButtonHeight / -3);
+                    right: calc($removeButtonHeight / -3);
+                    
+                    border-radius: 50%;
+                }
+                &:hover img.remove-col {
+                    visibility: visible;
+                    opacity: 1.0;
+                    transition: height 0s ease 0s, visibility 0s ease 0s;
+                    height: $removeButtonHeight;
+                }
             }
         }
         div[class^="col-"] {
