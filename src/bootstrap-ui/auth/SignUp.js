@@ -1,13 +1,12 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState, useEffect, useContext } from "react"
+import { Link, useHistory } from "react-router-dom"
 
-import auth from "../firebase";
-import { useAuthContext } from "../conts/AuthContext";
-import { AuthPanelContext } from "../conts/AuthPanelContext";
+import { useAuthContext } from "../conts/AuthContext"
+import { formDataPass } from "../redux/reducers/authReducer"
 
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert } from "react-bootstrap"
 
-import "./style.css";
+import "./style.css"
 
 export default function SignUp() {
     const emailRef = useRef();
@@ -15,13 +14,6 @@ export default function SignUp() {
     const passwordConfirmRef = useRef();
 
     const { signup } = useAuthContext();
-    const [
-        authPanelShow,
-        setAuthPanelShow,
-        authStatus,
-        setAuthStatus,
-        formDataPass,
-    ] = useContext(AuthPanelContext);
 
     const [successStatus, setSuccessStatus] = useState({
         status: null,

@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom"
 
-import AuthPanelContextProvider from "./conts/AuthPanelContext";
+import store from "./redux/store"
+import { Provider } from "react-redux"
 
-import Home from "./pages/Home";
+import Home from "./pages/Home"
 
-import "./App.css";
+import "./App.css"
 
 function App() {
     return (
-        <AuthPanelContextProvider>
+        <Provider store={store}>
             <Router>
                 <Home />
             </Router>
-        </AuthPanelContextProvider>
+        </Provider>
     );
 }
 

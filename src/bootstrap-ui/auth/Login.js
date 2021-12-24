@@ -1,14 +1,16 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState, useEffect } from "react"
+import { Link, useHistory } from "react-router-dom"
 
-import { useAuthContext } from "../conts/AuthContext";
-import { AuthPanelContext } from "../conts/AuthPanelContext";
+import { useSelector, useDispatch } from 'react-redux'
 
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { useAuthContext } from "../conts/AuthContext"
+import { formDataPass } from "../redux/reducers/authReducer"
 
-import LogoutButton from "./Logout";
+import { Form, Button, Card, Alert } from "react-bootstrap"
 
-import "./style.css";
+import LogoutButton from "./Logout"
+
+import "./style.css"
 
 function Login() {
     const emailRef = useRef();
@@ -17,13 +19,14 @@ function Login() {
     // Provides login function from firebase API. 
     const { login } = useAuthContext();
 
-    /*  formDataPass provides data sharing among auth panels eg. login, signup
-        authStatus provides whether user loggedIn or not and navbar button text */
-    const [authPanelShow, setAuthPanelShow, authStatus, setAuthStatus, formDataPass] =
-        useContext(AuthPanelContext);
+    // authStatus provides whether user loggedIn or not and navbar button text
+    const authStatus = useSelector(state => state.authStatus)
+
+    const dispatch = useDispatch()
+
     // keeps status of succes and message text
     const [successStatus, setSuccessStatus] = useState({status: null, message: ''});
-    // loading state makes login button disabled
+    // oading state makes login button disabled
     const [loading, setLoading] = useState(false);
 
     let emailName = "";
@@ -41,7 +44,8 @@ function Login() {
                     0,
                     emailRef.current.value.indexOf("@")
                 );
-                setAuthStatus({ loggedIn: true, buttonText: emailName });
+
+                dispatch({ type: 'auth/setStatus', payload: { loggedIn: true, buttonText: emailName } });
                 console.log(
                     "firebase login succeded: email: ",
                     user.email,

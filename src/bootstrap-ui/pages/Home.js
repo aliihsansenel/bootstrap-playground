@@ -1,46 +1,49 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react"
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     useHistory,
-} from "react-router-dom";
-import { Container, Button, Navbar } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+} from "react-router-dom"
 
-import AuthProvider from "../conts/AuthContext";
-import { AuthPanelContext } from "../conts/AuthPanelContext";
+import { useSelector, useDispatch } from 'react-redux'
 
-import Login from "../auth/Login";
-import SignUp from "../auth/SignUp";
-import ResetPassword from "../auth/ResetPassword";
+import AuthProvider from "../conts/AuthContext"
 
-import BuilderContainer from "./builder/BuilderContainer";
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 
-import "./style.css";
+import { Container, Button, Navbar } from "react-bootstrap"
+
+import Login from "../auth/Login"
+import SignUp from "../auth/SignUp"
+import ResetPassword from "../auth/ResetPassword"
+
+import BuilderContainer from "./builder/BuilderContainer"
+
+import "./style.css"
 
 // Home page
 function Home() {
-    const [authPanelShow, setAuthPanelShow, authStatus] =
-        useContext(AuthPanelContext);
     let history = useHistory();
+
+    const dispatch = useDispatch()
+    
+    /*  displayPanel indicates whether auth panel should displayed
+        authStatus provides whether user loggedIn or not and navbar button text */
+    const {displayPanel, authStatus } = useSelector(state => state)
 
     // Clicking button on navbar displays auth panel
     function handleClick(e) {
-        if (!authPanelShow) history.push("/login");
-        setAuthPanelShow((authPanelShow) => !authPanelShow);
+        if (!displayPanel) history.push("/login");
+        dispatch({type: 'auth/togglePanel'})
         e.stopPropagation();
     }
     // Clicking outside auth panel closes auth panel
     function closeAuthPanel(e) {
-        setAuthPanelShow((authPanelShow) => {
-            if (authPanelShow && !e.target.closest(".card a, .auth")) {
-                return false;
-            } else {
-                return authPanelShow;
-            }
-        });
+        if (displayPanel && !e.target.closest(".card a, .auth")) {
+            dispatch({type: 'auth/hidePanel'})
+        }
     }
     useEffect(() => {
         document.body.addEventListener("click", closeAuthPanel);
@@ -61,7 +64,7 @@ function Home() {
                 <Button
                     onClick={handleClick}
                     variant={
-                        authStatus.loggedIn && !authPanelShow
+                        authStatus.loggedIn && !displayPanel
                             ? "light"
                             : "primary"
                     }
@@ -80,7 +83,7 @@ function Home() {
                         <div className="w-100 ml-auto">
                             <div
                                 className={
-                                    "auth" + (authPanelShow ? "" : " hidden")
+                                    "auth" + (displayPanel ? "" : " hidden")
                                 }
                             >
                                 {/* react-router routing */}

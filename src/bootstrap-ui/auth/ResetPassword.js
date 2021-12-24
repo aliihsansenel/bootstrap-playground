@@ -1,19 +1,17 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useRef, useState, useEffect, useContext } from "react"
+import { Link, useHistory } from "react-router-dom"
 
-import { useAuthContext } from "../conts/AuthContext";
-import { AuthPanelContext } from "../conts/AuthPanelContext";
+import { useAuthContext } from "../conts/AuthContext"
+import { formDataPass } from "../redux/reducers/authReducer"
 
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert } from "react-bootstrap"
 
-import "./style.css";
+import "./style.css"
 
 export default function ResetPassword() {
     const emailRef = useRef();
 
     const { resetPassword } = useAuthContext();
-    const [authPanelShow, setAuthPanelShow, authStatus, setAuthStatus, formDataPass] =
-        useContext(AuthPanelContext);
 
     const [successStatus, setSuccessStatus] = useState({status: null, message: ''});
     const [loading, setLoading] = useState(false);
